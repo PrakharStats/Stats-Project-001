@@ -13,6 +13,10 @@ from matplotlib.pylab import rcParams
 rcParams['figure.figsize']=20,10
 from keras.models import Sequential
 from keras.layers import LSTM,Dropout,Dense
+from plotly.offline import download_plotlyjs,init_notebook_mode,plot,iplot 
+import cufflinks as cf
+init_notebook_mode(connected=True)
+cf.go_offline()
 
 
 # In[2]:
@@ -67,7 +71,9 @@ Tata_df.tail()
 
 
 ## Checking for null values ##
-Tata_df.isnull()
+Tata_df.isnull().sum()
+Tata_df = Tata_df.dropna()
+Tata_df['Volume'][0] = Tata_df['Volume'].head(7).mean()
 
 
 # In[10]:
@@ -92,22 +98,17 @@ Tata_df.index=Tata_df['Date']
 # In[12]:
 
 
-plt.figure(figsize=(16,8))
-plt.plot(Tata_df["Close"],label='Close Price history')
+Tata_df['Close'].iplot(kind = 'line',title = 'Close Price History')
 
 
 # In[14]:
 
-
-plt.figure(figsize=(16,8))
-plt.plot(Tata_df["Volume"],label='Volume history')
+Tata_df['Volume'].iplot(kind = 'line',title = 'Volume History')
 
 
 # In[15]:
 
-
-plt.figure(figsize=(16,8))
-plt.plot(Tata_df["Open"],label='Open Price history')
+ata_df["Open"].iplot(kind = 'line',title = 'Open Price History')
 
 
 # In[16]:
