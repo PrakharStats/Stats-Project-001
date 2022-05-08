@@ -108,7 +108,7 @@ Tata_df['Volume'].iplot(kind = 'line',title = 'Volume History')
 
 # In[15]:
 
-ata_df["Open"].iplot(kind = 'line',title = 'Open Price History')
+Tata_df["Open"].iplot(kind = 'line',title = 'Open Price History')
 
 
 # In[16]:
